@@ -59,7 +59,7 @@ enum Action {
     case actNitro
 }
 
-class TrunkCar: Car, CustomStringConvertible {
+class TrunkCar: Car {
     var brand: String
     var productYear: Int
     var engine: EngineStatus
@@ -87,13 +87,15 @@ class TrunkCar: Car, CustomStringConvertible {
             break
         }
     }
-    
+}
+
+extension TrunkCar: CustomStringConvertible{
     var description: String {
         return "Brand: \(brand), year: \(productYear), max cargo: \(maxCargoSpace), used cargo: \(currentCargoSpace)"
     }
 }
 
-class SportCar: Car, CustomStringConvertible {
+class SportCar: Car {
     var brand: String
     var productYear: Int
     var engine: EngineStatus
@@ -127,10 +129,6 @@ class SportCar: Car, CustomStringConvertible {
         }
     }
     
-    var description: String {
-        return "Brand: \(brand), year: \(productYear), top speed: \(topSpeed), nitro: \(nitro)"
-    }
-    
     enum NitroExist: CustomStringConvertible {
         case yes, none
         
@@ -142,6 +140,12 @@ class SportCar: Car, CustomStringConvertible {
                 return "Car does not have nitro"
             }
         }
+    }
+}
+
+extension SportCar: CustomStringConvertible {
+    var description: String {
+        return "Brand: \(brand), year: \(productYear), top speed: \(topSpeed), nitro: \(nitro)"
     }
 }
 
