@@ -16,8 +16,8 @@ struct Queue<T: Comparable> {
         return items.removeFirst()
     }
     
-    mutating func filter(item:T) {
-        items.filter{$0 == item}
+    func filter(item:T) -> [T] {
+        return  items.filter{$0 == item}
     }
     
     subscript (index: Int) -> T {
@@ -30,7 +30,7 @@ q1.add(item: 10)
 q1.add(item: 5)
 q1.add(item: 15)
 q1.add(item: 7)
-q1.filter(item: 10)
+print(q1.filter(item: 10))
 print(q1)
 print(q1[2])
 
